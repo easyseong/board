@@ -4,6 +4,7 @@ import com.mybatis.board.dao.BoardDao;
 import com.mybatis.board.model.Board;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -22,14 +23,14 @@ public class BoardController {
     }
 
     @GetMapping("/create")
-    public List<Board> create(Board board) {
+    public List create(Board board) {
         boardDao.create(board);
         log.info("create: " + board + "=========================");
         return boardDao.selectList();
     }
 
-    @GetMapping("/read")
-    public Board read(@RequestParam int bno) {
+    @GetMapping("/read/{bno}")
+    public Board read(@PathVariable("bno") int bno) {
         Board result = boardDao.read(bno);
         log.info("read: " + result + "=========================");
         return result;
@@ -41,8 +42,8 @@ public class BoardController {
         log.info("update: " + board + "=========================");
         return boardDao.selectList();
     }
-    @GetMapping("/delete")
-    public List<Board> delete(@RequestParam int bno) {
+    @GetMapping("/delete/{bno}")
+    public List<Board> delete(@PathVariable("bno") int bno) {
         boardDao.delete(bno);
         log.info("delete: " + bno + "=========================");
         return boardDao.selectList();
