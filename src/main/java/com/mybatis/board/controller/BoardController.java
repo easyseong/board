@@ -48,11 +48,6 @@ public class BoardController {
         return boardDao.selectList();
     }
 
-    @GetMapping("/test")
-    public String test(@RequestParam String a, @RequestParam String b) {
-        log.info("test===============================");
-        return a + b;
-    }
 
 
 }
