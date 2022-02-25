@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
 
-public class BoardServiceImpl implements BoardService {
+public class BoardServiceImpl implements BoardService { //서비스에서 dao를 호출? 사용
 
     @Autowired
     BoardDao boardDao; //boardDao에 xml에 접근하는 id 있음
